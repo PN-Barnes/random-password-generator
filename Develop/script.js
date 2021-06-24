@@ -52,9 +52,11 @@ var confirmNumbers = confirm('Do you want Numbers in your password?');
 
 var confirmSpecialCharacters = confirm('Do you want any special characters in your password?')
 
-var randomIndex = Math.floor(Math.random * charactersArr.length)
+ console.log(charactersArr.length)
+
+var randomIndex = Math.floor(Math.random() * charactersArr.length)
 console.log(randomIndex)
-var randomSelect = Math.floor(Math.random * charactersArr[randomIndex.length]);
+var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
 console.log(randomSelect)
 var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
 
@@ -62,6 +64,9 @@ console.log(randomSelectedCharacter)
 
 function generatePassword() {
   for (i=0; i <= passwordLength; i++) {
+    var randomIndex = Math.floor(Math.random() * charactersArr.length)
+    var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
+    var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
     generatedPassword.push(randomSelectedCharacter)
     return generatedPassword;
   }
