@@ -20,14 +20,10 @@ console.log(passwordCharLength)
 var passwordLength = parseInt(passwordCharLength);
 console.log(passwordLength);
 
-if(passwordLength > 8 && passwordLength < 128) {
+if(passwordLength >= 8 && passwordLength <= 128) {
   alert('Your password will be ' + passwordLength + ' characters.')
 } else {
   alert('Your password length must be between 8 and 128 characters and must be a number.')
-}
-
-function stringToNum() {
-  
 }
 
 console.log(typeof passwordLength)
@@ -63,13 +59,13 @@ var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
 console.log(randomSelectedCharacter)
 
 function generatePassword() {
-  for (i=0; i <= passwordLength; i++) {
+  for (i=0; i < passwordLength; i++) {
     var randomIndex = Math.floor(Math.random() * charactersArr.length)
     var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
     var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
     generatedPassword.push(randomSelectedCharacter)
-    return generatedPassword;
   }
+  return generatedPassword
 }
 
-generatePassword()
+writePassword()
