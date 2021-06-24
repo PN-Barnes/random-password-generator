@@ -28,7 +28,9 @@ if(passwordLength >= 8 && passwordLength <= 128) {
 
 console.log(typeof passwordLength)
 
-var charactersArr = [['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']]
+// var charactersArr = [['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'],[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']]
+
+var charactersArr = []
 
 var upperAlphabetChars = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
 
@@ -38,10 +40,13 @@ var numbersArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 var passwordArrayCharacters = []
 var generatedPassword = []
+var deniedCharacters = []
 
 var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 
 var confirmLowercase = confirm('Do you want Lowercase letters in your password?');
+
+console.log(confirmLowercase)
 
 var confirmUppercase = confirm('Do you want Uppercase letters in your password?');
 
@@ -49,15 +54,29 @@ var confirmNumbers = confirm('Do you want Numbers in your password?');
 
 var confirmSpecialCharacters = confirm('Do you want any special characters in your password?')
 
+var checkConfirmsArr = [confirmLowercase, confirmUppercase, confirmNumbers, confirmSpecialCharacters]
+console.log(checkConfirmsArr.length)
+
+function selectCharacters() {
+  for ( i = 0; i < checkConfirmsArr.length; i++) {
+    if(checkConfirmsArr[i] === false) {
+      deniedCharacters.push(checkConfirmsArr[i])
+    } else {
+      charactersArr.push(checkConfirmsArr[i])
+    }
+  }
+}
+
+selectCharacters()
+console.log(charactersArr)
  console.log(charactersArr.length)
 
-var randomIndex = Math.floor(Math.random() * charactersArr.length)
-console.log(randomIndex)
-var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
-console.log(randomSelect)
-var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
+// var randomIndex = Math.floor(Math.random() * charactersArr.length)
+// console.log(randomIndex)
+// var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
+// console.log(randomSelect)
+// var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
 
-console.log(randomSelectedCharacter)
 
 function generatePassword() {
   for (i=0; i < passwordLength; i++) {
