@@ -9,12 +9,14 @@ var lowerAlphabetChars = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k',
 var numbersArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 var specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 var passwordArrayCharacters = []
-var generatedPassword = []
 var deniedCharacters = []
+var generatedPassword = []
 
+
+console.log(charactersArr)
 // Write password to the #password input
 function writePassword() {
-
+  
   // ---------------------------------------------------------------------------------------------
   var passwordCharLength = prompt('How long do you want your password?')
   var passwordLength = parseInt(passwordCharLength);
@@ -22,21 +24,19 @@ function writePassword() {
     alert('Your password will be ' + passwordLength + ' characters.')
   } else {
     alert('Your password length must be between 8 and 128 characters and must be a number.')
-    // return false;
+    return;
   }
-
+  
   var confirmLowercase = confirm('Do you want Lowercase letters in your password?');
-
-  console.log(confirmLowercase)
-
+  
   var confirmUppercase = confirm('Do you want Uppercase letters in your password?');
-
+  
   var confirmNumbers = confirm('Do you want Numbers in your password?');
-
+  
   var confirmSpecialCharacters = confirm('Do you want any special characters in your password?')
-
   var checkConfirmsArr = [confirmLowercase, confirmUppercase, confirmNumbers, confirmSpecialCharacters]
-  function selectCharacters() {
+
+  function sort() {
     for ( i = 0; i < checkConfirmsArr.length; i++) {
       if(checkConfirmsArr[i] === false) {
         deniedCharacters.push(checkConfirmsArr[i])
@@ -44,12 +44,14 @@ function writePassword() {
         charactersArr.push(checkConfirmsArr[i])
       }
     }
+    return charactersArr;
   }
-  // console.log(checkConfirmsArr.length)
+  
+  console.log(checkConfirmsArr.length)
   //var password = generatePassword();
   for (i=0; i < passwordLength; i++) {
-    var randomIndex = Math.floor(Math.random() * charactersArr.length)
-    var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length)
+    var randomIndex = Math.floor(Math.random() * charactersArr.length);
+    var randomSelect = Math.floor(Math.random() * charactersArr[randomIndex].length);
     var randomSelectedCharacter = charactersArr[randomIndex][randomSelect];
     passwordArrayCharacters.push(randomSelectedCharacter);
     generatedPassword = passwordArrayCharacters.join('')
@@ -60,7 +62,7 @@ function writePassword() {
 
   passwordText.value = generatePassword;
     
-}
+} // End of function writePassword()
 
 
 
